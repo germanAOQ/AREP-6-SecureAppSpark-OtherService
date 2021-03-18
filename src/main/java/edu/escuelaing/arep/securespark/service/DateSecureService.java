@@ -9,9 +9,9 @@ public class DateSecureService {
 
     public static void main(String[] args){
         //API: secure(keystoreFilePath, keystorePassword, truststoreFilePath, truststorePassword);
-        secure("keystores/ecikeystoreOtherService.p12", "123456", "keystores/trustStoreOtherServicer", "654321");
+        secure("keystores/ecikeystoreOtherService.p12", "123456", "keystores/myTrustStore", "abcdef");
         port(getPort());
-        get("/actualtime", (req,res)->{
+        get("/actualtime", (req,res)->{ 
             return new Gson().toJson(LocalDate.now());
         });
     }
@@ -20,6 +20,6 @@ public class DateSecureService {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
         }
-        return 4567; //returns default port if heroku-port isn't set (i.e. on localhost)
+        return 34000; //returns default port if heroku-port isn't set (i.e. on localhost)
     }
 }
